@@ -43,7 +43,6 @@ function App() {
   }
   // edit task function
   function editTask(id){
-    console.log(list);
     setEditState({
       status:true,
       id:id
@@ -80,18 +79,18 @@ function addEdit(){
 
   // main Component
   return (
-    <div>
+    <div className="box">
       <h1>To Do List</h1>
       <input type="text" name="task" 
       id="task" value={task.message}
       onChange={changeTask}
       placeholder="Enter task"/>
       {
-        editState.status?<button onClick={addEdit}>Edit</button>:<button onClick={addTask}>Add</button>
+        editState.status?<button onClick={addEdit} className="a">Edit</button>:<button onClick={addTask} className="a">Add</button>
       }
-      <hr/>
+      <hr className="line"/>
       {
-        list.length==0 &&<h1>List is empty</h1>
+        list.length==0 &&<h1 className="warn">List is empty</h1>
       }
        <ul>
         {
@@ -100,8 +99,8 @@ function addEdit(){
             return(
               <li key={id}>
                 <span>{text}</span>
-                <button onClick={()=>deleteTask(id)}>deleteTask</button>
-                <button onClick={()=>editTask(id)}>editTask</button>
+                <button onClick={()=>deleteTask(id)} className="delete">deleteTask</button>
+                <button onClick={()=>editTask(id)} className="edit">editTask</button>
               </li>
             )
           })
